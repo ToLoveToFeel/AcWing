@@ -1,13 +1,15 @@
-package _0785;
+package _0787;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- * Date: 2020/12/24 15:11
+ * Date: 2020/12/24 16:38
  * Content: 模板题
  */
 public class Main {
+
+    public static int[] tmp;
 
     private static void swap(int[] arr, int i, int j) {
         int t = arr[i];
@@ -15,19 +17,25 @@ public class Main {
         arr[j] = t;
     }
 
-    private static void quickSort(int[] arr, int l, int r) {
+    private static void mergeSort(int[] arr, int l, int r) {
 
         if (l >= r) return;
 
-        int x = arr[(l + r) >> 1], i = l - 1, j = r + 1;
-        while (i < j) {  // 双指针
-            do i++; while (arr[i] < x);
-            do j--; while (arr[j] > x);
-            if (i < j) swap(arr, i, j);
-        }
+        int mid = (r - l) / 2 + l;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid + 1, r);
 
-        quickSort(arr, l, j);
-        quickSort(arr, j + 1, r);
+        int k = 0, i = l, j = mid + 1;
+        while (i <= mid && j <= r) {
+            if (arr[i] < arr[j])
+                tmp[k++] = arr[i++];
+            else
+                tmp[k++] = arr[j++];
+        }
+        while (i <= mid) tmp[k++] = arr[i++];
+        while (j <= r) tmp[k++] = arr[j++];
+
+        for (i = l, j = 0; i <= r; i++, j++) arr[i] = tmp[j];
     }
 
     public static void main(String[] args) throws Exception {
@@ -35,8 +43,8 @@ public class Main {
         // 读入数据
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
-        int n = Integer.parseInt(br.readLine());  // 数据个数
-
+        int n = Integer.parseInt(br.readLine());
+        tmp = new int[n];
         int[] arr = new int[n];
         String[] t = br.readLine().split(" ");
         for (int i = 0; i < n; i++) {
@@ -46,7 +54,7 @@ public class Main {
         isr.close();
 
         // 算法代码
-        quickSort(arr, 0, n - 1);
+        mergeSort(arr, 0, n - 1);
 
         for (int i = 0; i < n; i++)
             System.out.print(arr[i] + " ");
