@@ -11,11 +11,11 @@ public class Main {
     public static void main(String[] args) {
 
         int a, b;
-        Scanner scanner = new Scanner(System.in);
-        a = scanner.nextInt();
-        b = scanner.nextInt();
+        Scanner scan = new Scanner(System.in);
+        a = scan.nextInt();
+        b = scan.nextInt();
         System.out.println(a + b);
 
-        scanner.close();
+        scan.close();
     }
 }

@@ -24,7 +24,6 @@ public class Main2 {
         scan.close();
 
         // 算法代码
-        // 算法代码
         int[] dp = new int[V + 1];
         for (int i = 0; i < N; i++) {
             for (int j = V; j >= v[i]; j--) {
