@@ -31,16 +31,13 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String a = scan.next();
         String b = scan.next();
-
-        // 算法代码
         List<Integer> A = new ArrayList<>();
         List<Integer> B = new ArrayList<>();
         // 如果 a="123456" A = [6, 5, 4, 3, 2, 1]
-        for (int i = a.length() - 1; i >= 0; i--)
-            A.add(a.charAt(i) - '0');
-        for (int i = b.length() - 1; i >= 0; i--)
-            B.add(b.charAt(i) - '0');
+        for (int i = a.length() - 1; i >= 0; i--) A.add(a.charAt(i) - '0');
+        for (int i = b.length() - 1; i >= 0; i--) B.add(b.charAt(i) - '0');
 
+        // 算法代码
         List<Integer> C = add(A, B);
 
         for (int i = C.size() - 1; i >= 0; i--)
