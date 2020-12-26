@@ -12,6 +12,8 @@ https://www.acwing.com/problem/
 
 0005 多重背包问题 II
 
+0006 多重背包问题 III
+
 0785 快速排序
 
 0787 归并排序
