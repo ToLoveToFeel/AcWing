@@ -45,6 +45,21 @@ public class Main {
         quickSort2(arr, i, r);
     }
 
+    private static void quickSort3(int[] arr, int l, int r) {
+
+        if (l >= r) return;
+
+        int x = arr[(l + r) >> 1], i = l - 1, j = r + 1;
+        while (i < j) {  // 双指针
+            while (arr[++i] < x) ;
+            while (arr[--j] > x) ;
+            if (i < j) swap(arr, i, j);
+        }
+
+        quickSort2(arr, l, j);
+        quickSort2(arr, j + 1, r);
+    }
+
     public static void main(String[] args) throws Exception {
 
         // 读入数据
@@ -59,7 +74,7 @@ public class Main {
         isr.close();
 
         // 算法代码
-        quickSort(arr, 0, n - 1);
+        quickSort3(arr, 0, n - 1);
 
         for (int i = 0; i < n; i++)
             System.out.print(arr[i] + " ");

@@ -16,6 +16,8 @@ https://www.acwing.com/problem/
 
 0785 快速排序
 
+0786 第k个数
+
 0787 归并排序
 
 0789 数的范围
