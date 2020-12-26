@@ -14,6 +14,8 @@ https://www.acwing.com/problem/
 
 0006 多重背包问题 III
 
+0007 混合背包问题
+
 0785 快速排序
 
 0786 第k个数
