@@ -62,6 +62,8 @@ https://www.acwing.com/problem/
 
 0827 双链表
 
+0828 模拟栈
+
 2816 判断子序列
 
 
