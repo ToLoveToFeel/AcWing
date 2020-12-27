@@ -61,6 +61,7 @@ public class Main {
             alls.add(l);
             alls.add(r);
         }
+        scan.close();
 
         // 算法代码
         int N = n + 2 * m + 10;

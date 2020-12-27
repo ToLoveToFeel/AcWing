@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 
 /**
  * Date: 2020/12/26 21:09
- * Content:
+ * Content: 模板题
  */
 public class Main {
 
@@ -17,6 +17,7 @@ public class Main {
         String[] t = br.readLine().split(" ");
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) arr[i] = Integer.parseInt(t[i]);
+        br.close();
 
         // 算法代码
         int[] hash = new int[100000 + 10];

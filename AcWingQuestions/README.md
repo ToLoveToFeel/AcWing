@@ -60,6 +60,8 @@ https://www.acwing.com/problem/
 
 0826 单链表
 
+0827 双链表
+
 2816 判断子序列
 
 
