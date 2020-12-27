@@ -17,7 +17,7 @@ public class Main {
         int[] v = new int[N];  // 0~N-1 物品的体积
         int[] w = new int[N];  // 0~N-1 物品的价值
         for (int i = 0; i < N; i++) {
-            // // 接下来有 N 行，每行有两个整数:v[i],w[i]，用空格隔开，分别表示第i件物品的体积和价值
+            // 接下来有 N 行，每行有两个整数:v[i],w[i]，用空格隔开，分别表示第i件物品的体积和价值
             v[i] = scan.nextInt();
             w[i] = scan.nextInt();
         }
