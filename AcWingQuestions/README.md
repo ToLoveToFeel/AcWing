@@ -72,6 +72,8 @@ https://www.acwing.com/problem/
 
 0830 单调栈
 
+0831 KMP字符串
+
 2816 判断子序列
 
 
