@@ -58,6 +58,8 @@ https://www.acwing.com/problem/
 
 0803 区间合并
 
+0826 单链表
+
 2816 判断子序列
 
 
