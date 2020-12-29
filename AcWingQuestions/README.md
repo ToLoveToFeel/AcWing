@@ -80,6 +80,10 @@ https://www.acwing.com/problem/
 
 0835 Trie字符串统计
 
+0836 合并集合
+
+0837 连通块中点的数量
+
 2816 判断子序列
 
 
