@@ -78,6 +78,8 @@ https://www.acwing.com/problem/
 
 0831 KMP字符串
 
+0835 Trie字符串统计
+
 2816 判断子序列
 
 
