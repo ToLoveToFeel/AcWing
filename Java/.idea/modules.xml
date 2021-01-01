@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AcWing.iml" filepath="$PROJECT_DIR$/AcWing.iml" />
       <module fileurl="file://$PROJECT_DIR$/AcWingQuestions/AcWingQuestions.iml" filepath="$PROJECT_DIR$/AcWingQuestions/AcWingQuestions.iml" />
       <module fileurl="file://$PROJECT_DIR$/Algorithm-01-BasicCourse-2/Algorithm-01-BasicCourse-2.iml" filepath="$PROJECT_DIR$/Algorithm-01-BasicCourse-2/Algorithm-01-BasicCourse-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java.iml" filepath="$PROJECT_DIR$/Java.iml" />
     </modules>
   </component>
 </project>
