@@ -56,8 +56,8 @@ public class Main {
             if (i < j) swap(arr, i, j);
         }
 
-        quickSort2(arr, l, j);
-        quickSort2(arr, j + 1, r);
+        quickSort3(arr, l, j);
+        quickSort3(arr, j + 1, r);
     }
 
     public static void main(String[] args) throws Exception {
