@@ -69,8 +69,8 @@ public class Main {
         pq.isEmpty();
         pq.clear();
         pq.add(1);  // 插入一个元素
-        pq.peek();  // 返回堆顶元素
         pq.remove();  // 删除堆顶元素
+        pq.peek();  // 返回堆顶元素
         // 定义大顶堆的方式
         PriorityQueue<Integer> pq1 = new PriorityQueue<>((o1, o2) -> o2 - o1);
     }
