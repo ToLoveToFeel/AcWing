@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(_0847_main AcWingQuestions/_0847/_0847_main.cpp)
 add_executable(_0848_main AcWingQuestions/_0848/_0848_main.cpp)
+add_executable(_0849_main AcWingQuestions/_0849/_0849_main.cpp)
