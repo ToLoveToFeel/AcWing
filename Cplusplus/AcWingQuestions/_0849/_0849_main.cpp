@@ -4,6 +4,8 @@
 
 using namespace std;
 
+// 朴素Dijkstra算法          O(n^2)                适合于稠密图
+
 const int N = 510;
 
 int n, m;  // 顶点数，边数
