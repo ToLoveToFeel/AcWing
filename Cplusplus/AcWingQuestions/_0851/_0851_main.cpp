@@ -1,13 +1,12 @@
 #include <cstring>
 #include <iostream>
-#include <algorithm>
 #include <queue>
 
 using namespace std;
 
 // SPFA     一般是O(m), 最坏O(n*m)     Bellman-Ford的优化
 
-const int N = 150010;
+const int N = 100010;
 
 int n, m;  // 顶点数，边数
 int h[N], e[N], w[N], ne[N], idx;  // 稀疏图，使用邻接表存储
