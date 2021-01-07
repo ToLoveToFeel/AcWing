@@ -1,11 +1,10 @@
 #include <cstring>
 #include <iostream>
-#include <algorithm>
 #include <queue>
 
 using namespace std;
 
-const int N = 20010;
+const int N = 10010;
 
 int n, m;  // 总点数，总边数
 int h[N], w[N], e[N], ne[N], idx;  // 邻接表存储所有边
@@ -13,7 +12,7 @@ int dist[N], cnt[N];  // dist[x]存储1号点到x的最短距离，cnt[x]存储1
 bool st[N];  // 存储每个点是否在队列中
 
 void add(int a, int b, int c) {
-    e[idx] = b, w[idx] = c, ne[a] = h[a], h[a] = idx++;
+    e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
 }
 
 // 如果存在负环，则返回true，否则返回false。
@@ -27,13 +26,10 @@ bool spfa() {
         q.push(i);
         st[i] = true;
     }
-
     while (q.size()) {
         auto t = q.front();
         q.pop();
-
         st[t] = false;
-
         for (int i = h[t]; i != -1; i = ne[i]) {
             int j = e[i];
             if (dist[j] > dist[t] + w[i]) {
@@ -47,25 +43,19 @@ bool spfa() {
             }
         }
     }
-
     return false;
 }
 
 int main() {
+    memset(h, -1, sizeof h);
+    cin >> n >> m;
 
-    // 读入点数，边数
-    scanf("%d%d", &n, &m);
-    // 设置所有点之间距离都是无穷
-    memset(h, -1, sizeof(h));
-    // 读入所有的边
-    while (m--) {
+    for (int i = 0; i < m; i++) {
         int a, b, c;
         scanf("%d%d%d", &a, &b, &c);
-        add(a, b, c);  // 邻接表可以自动解决自环和重边的问题，不需要特殊处理
+        add(a, b, c);
     }
 
-    if(spfa()) puts("Yes");
+    if (spfa()) puts("Yes");
     else puts("No");
-
-    return 0;
 }
