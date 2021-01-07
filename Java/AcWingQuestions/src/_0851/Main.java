@@ -1,27 +1,30 @@
 package _0851;
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Deque;
 import java.util.Scanner;
 
 /**
  * Date: 2021/1/6 23:11
- * Content: Time Limit Exceeded
+ * Content: 将Deque<Integer> q = new ArrayDeque<>();换成自己实现的队列，可以通过测试，否则超时
  */
 public class Main {
 
-    public static final int N = 100010;
-    public static int n, m;  // 顶点数，边数
-    // 稀疏图，使用邻接表存储
-    public static int[] h = new int[N];
-    public static int[] e = new int[N];
-    public static int[] w = new int[N];
-    public static int[] ne = new int[N];
-    public static int idx = 0;
+    static final int N = 100010;
+    static final int INF = 0x3f3f3f3f;
 
-    public static int[] dist = new int[N];    // 存储起始点(1号点)到其他点的最短距离
-    public static boolean[] st = new boolean[N];
+    static int n, m;  // 顶点数，边数
+    // 稀疏图，使用邻接表存储
+    static int[] h = new int[N];
+    static int[] e = new int[N];
+    static int[] w = new int[N];
+    static int[] ne = new int[N];
+    static int idx = 0;
+
+    static int[] dist = new int[N];    // 存储起始点(1号点)到其他点的最短距离
+    static boolean[] st = new boolean[N];
+
+    public static int[] q = new int[N];    // 数组模拟队列
+    static int hh = 0, tt = -1;
 
     private static void add(int a, int b, int c) {
         e[idx] = b;
@@ -30,18 +33,17 @@ public class Main {
         h[a] = idx++;
     }
 
-    private static int dijkstra() {
+    private static int spfa() {
 
-        Arrays.fill(dist, 0x3f3f3f3f);
+        Arrays.fill(dist, INF);
         dist[1] = 0;
 
-        Deque<Integer> q = new ArrayDeque<>();
-        q.push(1);
+//        Deque<Integer> q = new ArrayDeque<>();  // 无法通过测试
+        q[++tt] = 1;
         st[1] = true;  // 代表在队列中
 
-        while (!q.isEmpty()) {
-            int t = q.peek();
-            q.pop();
+        while (hh <= tt) {
+            int t = q[hh++];
 
             st[t] = false;
 
@@ -50,7 +52,7 @@ public class Main {
                 if (dist[j] > dist[t] + w[i]) {
                     dist[j] = dist[t] + w[i];
                     if (!st[j]) {
-                        q.push(j);
+                        q[++tt] = j;
                         st[j] = true;
                     }
                 }
@@ -75,7 +77,7 @@ public class Main {
             add(a, b, c);  // 邻接表可以自动解决自环和重边的问题，不需要特殊处理
         }
 
-        int t = dijkstra();
+        int t = spfa();
 
         if (t == -1) System.out.println("impossible");
         else System.out.println(t);
