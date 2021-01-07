@@ -19,7 +19,7 @@ bool dfs(int u, int c) {
     for (int i = h[u]; i != -1; i = ne[i]) {
         int j = e[i];
         if (color[j] == -1) {
-            if (!dfs(j, !color[u])) return false;
+            if (!dfs(j, !c)) return false;
         } else if (color[j] == c) return false;
     }
     return true;
