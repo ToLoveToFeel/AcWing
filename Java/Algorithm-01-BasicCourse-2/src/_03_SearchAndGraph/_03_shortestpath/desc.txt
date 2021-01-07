@@ -211,6 +211,23 @@ bool spfa()
 }
 
 
+Floyd算法：
+const int INF = 0x3f3f3f3f;
+初始化：
+    for (int i = 1; i <= n; i ++ )
+        for (int j = 1; j <= n; j ++ )
+            if (i == j) d[i][j] = 0;
+            else d[i][j] = INF;
+
+// 算法结束后，d[a][b]表示a到b的最短距离
+void floyd()
+{
+    for (int k = 1; k <= n; k ++ )
+        for (int i = 1; i <= n; i ++ )
+            for (int j = 1; j <= n; j ++ )
+                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
+}
+
 
 ---------------------------------------------------------
 对应练习：
@@ -219,3 +236,4 @@ AcWing 0850 Dijkstra求最短路 II         堆优化版的Dijkstra算法
 AcWing 0853 有边数限制的最短路           Bellman-Ford
 AcWing 0851 spfa求最短路                SPFA
 AcWing 0852 spfa判断负环
+AcWing 0854 Floyd求最短路
