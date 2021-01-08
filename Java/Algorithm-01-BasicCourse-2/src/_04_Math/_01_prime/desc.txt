@@ -1,6 +1,7 @@
 质数
     -- 试除法判定质数              时间复杂度：O(sqrt(n))
     -- 试除法分解质因数            时间复杂度：O(log(n)) ~ O(sqrt(n))之间
+    -- 朴素筛法求素数              时间复杂度：O(n*log(log(n)))
 
 
 
@@ -32,10 +33,25 @@ void divide(int x)
 }
 
 
+朴素筛法求素数
+int primes[N], cnt;     // primes[]存储所有素数
+bool st[N];         // st[x]存储x是否被筛掉，为true代表是合数
+
+void get_primes(int n)
+{
+    for (int i = 2; i <= n; i ++ )
+    {
+        if (st[i]) continue;  // 只需要筛除质数的倍数即可
+        primes[cnt ++ ] = i;
+        for (int j = i + i; j <= n; j += i) st[j] = true;
+    }
+}
+
 
 
 ---------------------------------------------------------
 对应练习：
 AcWing 0866 试除法判定质数
 AcWing 0867 分解质因数
+AcWing 0868 筛质数
 
