@@ -59,6 +59,7 @@ void get_primes(int n)
     {
         if (!st[i]) primes[cnt ++ ] = i;
         // 这里没必要写 j < cnt, 因为i如果为合数的话，枚举到i的最小质因子后一定会停下来
+        // 因为i如果为质数的话，枚举到primes[j]后一定会停下来
         for (int j = 0; primes[j] <= n / i; j ++ )
         {
             st[primes[j] * i] = true;
