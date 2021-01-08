@@ -7,7 +7,7 @@ const int N = 1000010;
 int cnt = 0;
 bool st[N];  // st[x]存储x是否被筛掉，为true代表是合数
 
-// 埃式算法
+// 埃拉托色尼筛法  O(n*log(log(n)))
 void get_primes(int n) {
     for (int i = 2; i <= n; i++) {
         if (st[i]) continue;  // 只需要筛除质数的倍数即可
