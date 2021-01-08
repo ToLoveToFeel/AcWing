@@ -1,0 +1,32 @@
+约数
+    -- 试除法求所有约数            时间复杂度：O(sqrt(n))
+
+
+
+模板(C++)：
+试除法求所有约数
+vector<int> get_divisors(int x)
+{
+    vector<int> res;
+    for (int i = 1; i <= x / i; i ++ )
+        if (x % i == 0)
+        {
+            res.push_back(i);
+            if (i != x / i) res.push_back(x / i);
+        }
+    sort(res.begin(), res.end());
+    return res;
+}
+
+
+
+
+
+
+
+
+---------------------------------------------------------
+对应练习：
+AcWing 0869 试除法求约数
+
+
