@@ -1,0 +1,19 @@
+质数
+
+
+模板(C++)：
+试除法判定质数
+bool is_prime(int x)
+{
+    if (x < 2) return false;
+    for (int i = 2; i <= x / i; i ++ )
+        if (x % i == 0)
+            return false;
+    return true;
+}
+
+
+---------------------------------------------------------
+对应练习：
+AcWing 0866 试除法判定质数
+
