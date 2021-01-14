@@ -1,13 +1,7 @@
 #include <iostream>
-#include <queue>
-#include <algorithm>
-
-#define x first
-#define y second
 
 using namespace std;
 
-typedef pair<int, int> PII;
 const int N = 25;
 
 int n, m;  // 行数，列数
