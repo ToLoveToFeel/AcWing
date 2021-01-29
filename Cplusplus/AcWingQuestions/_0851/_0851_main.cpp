@@ -11,7 +11,7 @@ const int N = 100010;
 int n, m;  // 顶点数，边数
 int h[N], e[N], w[N], ne[N], idx;  // 稀疏图，使用邻接表存储
 int dist[N];  // 存储起始点(1号点)到其他点的最短距离
-bool st[N];  // 标记当前点是否已经求出最短距离，默认都是false
+bool st[N];  // 标记当前点是否在队列中
 
 void add(int a, int b, int c) {
     e[idx] = b, w[idx] = c, ne[idx] = h[a], h[a] = idx++;
