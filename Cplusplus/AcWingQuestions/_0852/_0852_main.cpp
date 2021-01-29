@@ -47,9 +47,10 @@ bool spfa() {
 }
 
 int main() {
-    memset(h, -1, sizeof h);
+
     cin >> n >> m;
 
+    memset(h, -1, sizeof h);
     for (int i = 0; i < m; i++) {
         int a, b, c;
         scanf("%d%d%d", &a, &b, &c);
@@ -58,4 +59,6 @@ int main() {
 
     if (spfa()) puts("Yes");
     else puts("No");
+
+    return 0;
 }
