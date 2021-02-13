@@ -8,7 +8,7 @@ typedef long long LL;
 // a ^ b mod p
 int qmi(int a, int b, int p) {
 
-    int res = 1 % p;
+    int res = 1 % p;  // 必须对p取模，否则样例：123456789 0 1 无法通过
     while (b) {
         if (b & 1) res = (LL) res * a % p;
         a = (LL) a * a % p;
