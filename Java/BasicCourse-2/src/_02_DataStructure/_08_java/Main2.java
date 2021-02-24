@@ -455,4 +455,36 @@ public class Main2 {
         if (r == a.length) return null;
         return a[r];
     }
+
+
+    // nth_element
+    @Test
+    public void test14() {
+
+        // java 中不存在nth_element，可以自己实现
+        int[] a = {6, 2, 1, 4, 3, 5};
+        int k = 2;  // a[1]已经被排到正确的位置上(递增序)，第二小的数
+        System.out.println(quick_sort(a, 0, a.length - 1, k));  // 2
+        for (int x : a) System.out.print(x + " ");
+        System.out.println();
+    }
+
+    // 返回 q[l...r]中第k小的数据
+    public int quick_sort(int[] q, int l, int r, int k) {
+
+        if (l == r) return q[l];
+
+        int x = q[l], i = l - 1, j = r + 1;
+        while (i < j) {
+            while (q[++i] < x) ;
+            while (q[--j] > x) ;
+            if (i < j) {
+                int t = q[i]; q[i] = q[j]; q[j] = t;
+            }
+        }
+
+        int sl = j - l + 1;
+        if (k <= sl) return quick_sort(q, l, j, k);
+        return quick_sort(q, j + 1, r, k - sl);
+    }
 }
