@@ -388,13 +388,23 @@ public class Main2 {
         // 对数组进行排序
         int[] a = {3, 1, 4, 5, 2};
         Arrays.sort(a);
-        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(a));  // [1, 2, 3, 4, 5]
+        Integer[] arr = new Integer[a.length];  // 对数组自定义比较运算需要先转为包装类
+        for (int i = 0; i < a.length; i++) arr[i] = a[i];
+//        Arrays.sort(arr, new Comparator<Integer>() {
+//            @Override
+//            public int compare(Integer o1, Integer o2) {
+//                return o2 - o1;
+//            }
+//        });
+        Arrays.sort(arr, (o1, o2) -> o2 - o1);
+        System.out.println(Arrays.toString(arr));  // [5, 4, 3, 2, 1]
 
         // 对 ArrayList 排序
         System.out.println("=======================");
         ArrayList<Integer> t = new ArrayList<>(Arrays.asList(3, 1, 4, 5, 2));
         Collections.sort(t);
-        System.out.println(t);
+        System.out.println(t);  // [1, 2, 3, 4, 5]
 
         // 对自定义的类排序
         // 两种方式：(1) 传入比较函数; (2) 继承Comparable接口，重写compareTo方法
@@ -414,10 +424,10 @@ public class Main2 {
         for (int i = 0; i < 4; i++) r.add(new Rec(-i, i));
         // 方式(1)
         Collections.sort(r, (o1, o2) -> o1.x - o2.x);  // o1在前：升序
-        System.out.println(r);
+        System.out.println(r);  // [Rec{x=-3, y=3}, Rec{x=-2, y=2}, Rec{x=-1, y=1}, Rec{x=0, y=0}]
         // 方式(2)
         Collections.sort(r);
-        System.out.println(r);
+        System.out.println(r);  // [Rec{x=-3, y=3}, Rec{x=-2, y=2}, Rec{x=-1, y=1}, Rec{x=0, y=0}]
     }
 
     // lower_bound/upper_bound
