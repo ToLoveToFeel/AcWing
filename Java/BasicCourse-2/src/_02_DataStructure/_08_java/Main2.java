@@ -217,6 +217,8 @@ public class Main2 {
             System.out.print(e.getKey() + "~" + e.getValue() + "\t");
         }
         System.out.println();
+        for (int v : a.values()) System.out.print(v + "\t");  // 只遍历值
+        System.out.println();
         // map 中判断某元素是否存在
         System.out.println(a.containsKey("wxx"));  // true
         // ceilingKey/higherKey
@@ -247,6 +249,8 @@ public class Main2 {
         for (Map.Entry<String, Integer> p : hash.entrySet()) System.out.print(p + "\t");
         System.out.println();
         for (String k : hash.keySet()) System.out.print(k + ":" + hash.get(k) + "\t");
+        System.out.println();
+        for (int v : hash.values()) System.out.print(v + "\t");  // 只遍历值
         System.out.println();
         // set 中判断某元素是否存在
         System.out.println(hash.containsKey("wxx"));  // true
