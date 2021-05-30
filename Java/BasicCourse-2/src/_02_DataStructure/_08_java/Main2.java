@@ -501,4 +501,37 @@ public class Main2 {
         if (k <= sl) return quick_sort(q, l, j, k);
         return quick_sort(q, j + 1, r, k - sl);
     }
+
+    @Test
+    public void test15() {
+        // 设置随机种子的话可以保证每次运行程序生成的序列时一致的
+        // 不同于C++, 如果不设置随机种子，每次运行得到的序列时不同的
+        Random r = new Random();
+        System.out.println(r.nextInt());
+        System.out.println(r.nextInt());
+
+        // 生成[0, x)范围的随机数据
+        int x = 15;
+        System.out.println(r.nextInt(x));
+
+        System.out.println("-------------------------------------");
+        int a = 5, b = 6;
+        // 生成[a, b)范围的随机数据
+        System.out.println(r.nextInt(b - a) + a);
+        // 生成(a, b]范围的随机数据
+        System.out.println(r.nextInt(b - a) + a + 1);
+        // 生成[a, b]范围的随机数据
+        System.out.println(r.nextInt(b - a + 1) + a);
+        System.out.println("-------------------------------------");
+        // 生成[a, b)范围的随机数据
+        System.out.println((int) (Math.random() * (b - a) + a));
+        // 生成(a, b]范围的随机数据
+        System.out.println((int) (Math.random() * (b - a) + a + 1));
+        // 生成[a, b]范围的随机数据
+        System.out.println((int) (Math.random() * (b - a + 1) + a));
+
+        System.out.println("-------------------------------------");
+        // 生成[0.0, 1,0)范围的随机数据
+        System.out.println(Math.random());
+    }
 }
