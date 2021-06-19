@@ -3,6 +3,7 @@ package _02_DataStructure._08_java;
 import javafx.util.Pair;
 import org.junit.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -184,6 +185,8 @@ public class Main2 {
         // 遍历 set，不能使用fori进行遍历
         for (int x : hash) System.out.print(x + " ");
         System.out.println();
+        // 随机返回HashSet中的一个数据
+        System.out.println(hash.iterator().next());
         // set 中判断某元素是否存在
         System.out.println(hash.contains(3));  // true
         // 清空 set
@@ -219,6 +222,10 @@ public class Main2 {
         System.out.println();
         for (int v : a.values()) System.out.print(v + "\t");  // 只遍历值
         System.out.println();
+        // 随机返回HashMap中的一个键
+        System.out.println(a.keySet().iterator().next());
+        // 随机返回HashMap中的一个值
+        System.out.println(a.values().iterator().next());
         // map 中判断某元素是否存在
         System.out.println(a.containsKey("wxx"));  // true
         // ceilingKey/higherKey
@@ -410,6 +417,13 @@ public class Main2 {
         Collections.sort(t);
         System.out.println(t);  // [1, 2, 3, 4, 5]
 
+        // 对String进行排序
+        String s = "dcab43210";
+        char[] cs = s.toCharArray();
+        Arrays.sort(cs);
+        String res = new String(cs);
+        System.out.println(res);  // 01234abcd
+
         // 对自定义的类排序
         // 两种方式：(1) 传入比较函数; (2) 继承Comparable接口，重写compareTo方法
         System.out.println("=======================");
@@ -533,5 +547,165 @@ public class Main2 {
         System.out.println("-------------------------------------");
         // 生成[0.0, 1,0)范围的随机数据
         System.out.println(Math.random());
+    }
+
+    // String
+    @Test
+    @SuppressWarnings("all")
+    public void test16() throws Exception {
+
+        String s1 = "HelloWorld";
+        // 输出字符串长度
+        System.out.println(s1.length());  // 10
+        // 获取字符串中某个字符
+        System.out.println(s1.charAt(0));  // H
+        // 判断字符串是否为空
+        System.out.println(s1.isEmpty());  // False
+        // 将字符串转化为全小写/全大写 后返回
+        System.out.println(s1.toLowerCase());  // helloworld
+        System.out.println(s1.toUpperCase());  // HELLOWORLD
+        System.out.println(s1);  // HelloWorld
+        // 去除字符串前后的空格
+        System.out.println("--" + "  he llo  world   ".trim() + "--");  // --he llo  world--
+        // 比较字符串
+        String s2 = "helloWorld";
+        System.out.println(s1.equals(s2));  // false  直接比较字符串内容
+        System.out.println(s1.equalsIgnoreCase(s2));  // true  忽略大小写比较字符串内容
+        // 字符串连接
+        System.out.println(s1.concat("You"));  // HelloWorldYou  等价于+
+        // 比较字符串的大小
+        System.out.println("abc".compareTo("abcd"));  // -1  负数意味着左边小，正数左边大，0相等
+        // 截取字符串 substring(int beginIndex, int endIndex) 左闭右开
+        String s3 = "我爱你中国";
+        System.out.println(s3.substring(3));  // 中国
+        System.out.println(s3.substring(0, 3));  // 我爱你
+
+
+        System.out.println("-------------------------------------");
+        System.out.println(s1);  // HelloWorld
+        // 测试此字符串是否以指定的后缀结束
+        System.out.println(s1.endsWith("world"));  // false
+        // 测试此字符串是否以指定的前缀开始
+        System.out.println(s1.startsWith("He"));  // true
+        // 测试此字符串从指定索引开始的子字符串是否以指定前缀开始
+        System.out.println(s1.startsWith("ll", 2));  // true
+
+
+        System.out.println("-------------------------------------");
+        System.out.println(s1);  // HelloWorld
+        // 测试当前字符串是否包含指定的char值序列
+        System.out.println(s1.contains("ll"));  // true
+
+        // 返回指定子字符串在此字符串中第一次出现处的索引，没有返回-1
+        System.out.println(s1.indexOf("ll"));  // 2
+        // 返回指定子字符串在此字符串中第一次出现处的索引，从指定索引开始
+        System.out.println(s1.indexOf("ll", 5));  // -1
+
+        // 返回指定子字符串在此字符串最右边出现的索引
+        System.out.println(s1.lastIndexOf("o"));  // 6
+        // 返回指定子字符串在此字符串最右边出现的索引，从指定索引开始反向搜索
+        System.out.println(s1.lastIndexOf("o", 5));  // 4
+
+
+        System.out.println("-------------------------------------");
+        String s4 = "北京欢迎您! 北京欢迎您!";
+        // String replace(char a, char b)
+        // 返回一个新的字符串，它是通过b替此字符串中出现的所有a得到的
+        System.out.println(s4.replace('北', '南'));  // 南京欢迎您! 南京欢迎您!
+        // String replace(CharSequence a, CharSequence b)
+        // 返回一个新的字符串，它是通过b替此字符串中出现的所有a得到的
+        System.out.println(s4.replace("北京", "上海"));  // 上海欢迎您! 上海欢迎您!
+
+        // String replaceAll(String regex, String b)
+        // 返回一个字符串，它是通过b替换此字符串所有匹配的正则表达式得到的
+        String s5 = "12hello34world5java7891mysql456";
+        // hello,world,java,mysql
+        System.out.println(s5.replaceAll("\\d+", ",").replaceAll("^,|,$", ""));
+        // String replaceFirst(String regex, String b)
+        // 返回一个字符串，它是通过b替换此字符串第一个匹配的正则表达式得到的
+        // hello,world,java,mysql,
+        System.out.println(s5.replaceAll("\\d+", ",").replaceFirst("^,|,$", ""));
+
+        // boolean matches(String regrex)
+        // 告知此字符串是否匹配给定的正则表达式
+        System.out.println("12345".matches("\\d+"));  // true
+        System.out.println("0571-4534289".matches("0571-\\d{7,8}"));  // true
+
+        // String[] split(String regrex)
+        // 根据给定正则表达式拆分此字符串
+        String s6 = "  good    good study, day day up   ";
+        // 去掉前后空格后用空格将字符串分开, \\s+ 会将多个空格看做一个
+        String[] strs1 = s6.trim().split("\\s+");
+        System.out.println(strs1.length);  // 6
+        // String[] split(String regrex, int limit)
+        // 根据给定正则表达式拆分此字符串, 最多不超过limit个, 如果超过了, 剩下的放到最后一个元素中
+        String[] strs2 = s6.trim().split("\\s+", 3);
+        System.out.println(strs2.length);  // 3
+
+
+        System.out.println("-------------------------------------");
+        System.out.println(Integer.parseInt("123"));  // String -> 基本数据类型/包装类
+        System.out.println(Double.parseDouble("1.2e9"));  // String -> 基本数据类型/包装类
+        System.out.println(String.valueOf(123));  // 基本数据类型/包装类 -> String
+        System.out.println(123.1 + "");  // 基本数据类型/包装类 -> String
+        // String -> char[]
+        String s7 = "123abc";
+        char[] chs = s7.toCharArray();
+        System.out.println(Arrays.toString(chs));  // [1, 2, 3, a, b, c]
+        // char[] -> String
+        System.out.println(new String(chs));  // 123abc
+        // String -> byte[]
+        byte[] bs1 = s7.getBytes();  // 使用默认的字符集进行转化
+        System.out.println(Arrays.toString(bs1));  // [49, 50, 51, 97, 98, 99]
+        String s8 = "123abc中国";
+        byte[] bs2 = s8.getBytes("gbk");  // 使用gbk进行编码
+        System.out.println(Arrays.toString(bs2));  // [49, 50, 51, 97, 98, 99, -42, -48, -71, -6]
+        // byte[] -> String
+        System.out.println(new String(bs1));  // 123abc
+        System.out.println(new String(bs2, "gbk"));  // 123abc中国
+    }
+
+    // StringBuilder/StringBuffer
+    @Test
+    @SuppressWarnings("all")
+    public void test17() {
+
+        // StringBuilder/StringBuffer和String相同的方法这里不演示了
+
+        StringBuilder sb = new StringBuilder("abc");
+
+        sb.append(1);
+        sb.append('2');
+        sb.append("345");
+        System.out.println(sb);  // abc12345
+
+        sb.delete(2, 4);
+        System.out.println(sb);  // ab2345
+
+        sb.replace(2, sb.length(), "hello");
+        System.out.println(sb);  // abhello
+
+        sb.insert(2, false);
+        System.out.println(sb);  // abfalsehello
+
+        sb.reverse();
+        System.out.println(sb);  // olleheslafba
+
+        String s = sb.substring(1, 3);
+        System.out.println(s);  // ll
+        System.out.println(sb);  // olleheslafba
+
+        sb.setCharAt(0, 'a');
+        System.out.println(sb);  // alleheslafba
+
+        /**
+         * 总结：
+         * (1) 增：append(xxx)
+         * (2) 删: delete(int start, int end)
+         * (3) 改: setCharAt(int index, char ch) / replace
+         * (4) 查: charAt(int index)
+         * (5) 长度: length()
+         * (6) 遍历: for (char c : sb.toString().toCharArray()) ...
+         */
     }
 }
